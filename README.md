@@ -1,38 +1,74 @@
-# ระบบสั่งกาแฟออนไลน์ — QA Portfolio (Software Testing Practice)
+# ☕ Coffee Shop Ordering — QA Portfolio
 
-ชุดงานทดสอบซอฟต์แวร์ (Software Testing) สำหรับระบบ **สั่งกาแฟออนไลน์ (Coffee Shop Ordering)** ออกแบบมาให้เข้าใจง่ายสำหรับคนเริ่มต้นทำพอร์ต Software Tester / QA
+**ระบบสั่งกาแฟออนไลน์ (Coffee Shop Ordering)** — ชุดงาน QA ครบวงจรสำหรับพอร์ต Software Tester
 
-## โครงสร้างไฟล์ใน Repo นี้
+`Manual (Chrome/Edge)` `Postman` `SQL (SQLite)` `Git/GitHub` `Excel/Markdown`
 
-| ไฟล์ | เนื้อหา |
-|---|---|
-| `docs/01-srs.md` | ภาพรวมระบบและเงื่อนไข (SRS ฉบับย่อ) |
-| `docs/02-test-cases.md` | Test Case 10 ข้อ พร้อมตาราง |
-| `data/test-cases.csv` | ไฟล์ CSV ก๊อปปี้/นำเข้า Google Sheets ได้ทันที |
-| `docs/03-postman-sql.md` | ตัวอย่าง Postman Tests และคำสั่ง SQL |
-| `postman/coffee-shop-orders.postman_collection.json` | Postman Collection พร้อมนำเข้าใช้งาน |
-| `docs/04-bug-reports.md` | ตัวอย่างรายงานบั๊ก (Defect Report) 2 ข้อ |
-| `sql/verify-orders.sql` | สคริปต์ SQL ตรวจสอบตาราง orders |
+---
 
-## สรุประบบใน 1 นาที
+## 📋 Project Overview
 
-ลูกค้าสั่งกาแฟผ่าน 3 หน้า: **เลือกเมนู → ตะกร้าสินค้า → กรอกเบอร์โทร/ที่อยู่จัดส่ง**
+- **โปรเจกต์:** ระบบสั่งกาแฟออนไลน์ (Customer: เลือกเมนู → ตะกร้า → กรอกเบอร์/ที่อยู่ → ยืนยันสั่งซื้อ)
+- **ขอบเขตงาน QA:** Manual Testing + API Testing (Postman) + SQL Verification + Bug Report + Regression
+- **ผลการทดสอบ:** execute 10/10 test cases (simulated run) 2 รอบ — รอบแรก pass 80% พบ 2 bugs, รอบ regression pass 100%
+- **การตัดสินใจปล่อยระบบ (Release Decision): GO** หลังแก้บั๊กครบและ regression ผ่านทั้งหมด
 
-กฎเกณฑ์สำคัญ (Business Rules):
-1. ยอดสั่งซื้อขั้นต่ำ **100 บาท**
-2. เบอร์โทรต้องเป็น **ตัวเลข 0-9 ครบ 10 หลัก** ขึ้นต้นด้วย 0
-3. ไม่เลือกความหวาน → ตั้งค่าเริ่มต้น **"หวานปกติ 100%"**
-4. จำนวนแก้วต้องเป็น **1 ขึ้นไป** (ห้าม 0 / ติดลบ)
+---
 
-## เมนูตัวอย่าง
+## 🎯 Testing Scope & Coverage
 
-| รหัส | เมนู | ราคา |
+| ด้าน | ครอบคลุม | รายละเอียด |
 |---|---|---|
-| M01 | อเมริกาโน่ | 40 บาท |
-| M02 | ลาเต้ | 45 บาท |
-| M03 | โมจิ | 50 บาท |
-| M04 | มัทฉะลาเต้ | 55 บาท |
+| **Functional Test Cases** | หน้าเมนู, ตะกร้า, จัดส่ง, คำสั่งซื้อ (6 business rules) | 10 test cases — Positive / Negative / Boundary / Validation |
+| **API Testing** | POST /orders | Postman collection 2 requests + assertions (status code) |
+| **Database (SQL)** | ตาราง orders | schema + seed 4 เมนู + 4 verification queries |
+| **Bug Reports** | 2 bugs | Critical 1 / High 1 พร้อม root cause |
+| **Regression** | ทุกเคสหลังแก้บั๊ก | 10/10 pass (build 1.1.0) |
 
-## ผู้จัดทำ
+---
 
-Kanokwan P. — QA Portfolio Project
+## 📁 Structure
+
+```
+coffee-shop-qa-portfolio/
+├── 01_Requirement/          SRS + business rules (BR-01..06)
+├── 02_Test_Plan/            Test Plan (scope, entry/exit criteria, risk)
+├── 03_Test_Scenario/        4 scenario groups
+├── 04_Test_Case/            10 test cases (.md + .csv สำหรับ Google Sheets)
+├── 05_Test_Data/            เมนู/เบอร์โทร/boundary ยอดเงิน
+├── 06_Traceability_Matrix/  RTM: requirement ↔ test case (100%)
+├── 07_API_Testing/          + Postman collection
+├── 08_SQL_Testing/          schema.sql + seed.sql + verification_queries.sql
+├── 09_Bug_Report/           2 bug reports
+├── 10_Test_Evidence/        (ที่สำหรับแนบภาพหน้าจอ)
+├── 11_Test_Execution/       ผลรัน 2 รอบ (CSV)
+├── 12_Test_Report/          Summary + release decision
+└── README.md
+```
+
+---
+
+## 📊 Test Results
+
+| รอบ | Build | Executed | Pass | Fail | พบบั๊ก | Pass Rate |
+|---|---|---|---|---|---|---|
+| Cycle 1 | 1.0.0 | 10 | 8 | 2 | 2 bugs (1 Critical) | 80.0% |
+| Regression | 1.1.0 | 10 | 10 | 0 | — (แก้ครบ) | 100% |
+
+> หมายเหตุ: ผลการ execute เป็น simulated run เพื่อการเรียนรู้/ทำพอร์ต
+
+---
+
+## 🛠 Tools
+
+Manual (Chrome/Edge) · Postman · SQL (SQLite) · Git/GitHub · Excel/Markdown
+
+---
+
+## ✨ Highlights
+
+1. **Boundary Value Analysis** ยอดขั้นต่ำ 100 บาท: ทดสอบ 80 (ไม่ผ่าน) / 100 พอดี (ผ่าน) / 135 (ผ่าน)
+2. **Negative Testing เจอบั๊ก Critical:** ยอดติดลบจากการกดลดจำนวนแก้ว (BUG-002)
+3. **SQL Verification:** ตรวจ transaction จริงในฐานข้อมูล (ชื่อ เบอร์ ยอด ถูกบันทึกถูกต้อง)
+4. **Traceability Matrix:** requirement ถูก cover 100% (6/6 business rules ↔ 10/10 test cases)
+5. **Bug Report มี reproduce 3-4 steps** ให้ dev ตามทำซ้ำได้ทันที

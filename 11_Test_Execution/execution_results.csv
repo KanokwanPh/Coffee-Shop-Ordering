@@ -1,0 +1,21 @@
+Test_Case_ID,Cycle,Build,Executed_By,Date,Status,Related_Bug,Notes
+TC-001,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,ยอดรวม 135 บาทถูกต้อง
+TC-002,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,แจ้งเตือนเบอร์ 9 หลัก
+TC-003,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,แจ้งเตือนที่อยู่ว่าง
+TC-004,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,กันจำนวน 0 และ -1
+TC-005,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,ยอด 90→135→90 ถูกต้อง
+TC-006,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,ยอด 40 บาทถูกกั้น
+TC-007,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,ค่าเริ่มต้นหวาน 100%
+TC-008,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,FAIL,BUG-001,เลขไทยผ่านเข้าไปได้
+TC-009,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,PASS,,ยอด 100 พอดีผ่าน (boundary)
+TC-010,Cycle 1,1.0.0,Kanokwan P.,2026-09-03,FAIL,BUG-002,ยอดติดลบ -45 บาท
+TC-001,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,หลังแก้ BUG-001/002
+TC-002,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-003,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-004,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-005,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-006,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-007,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-008,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,BUG-001 แก้แล้ว
+TC-009,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,
+TC-010,Regression,1.1.0,Kanokwan P.,2026-09-03,PASS,,BUG-002 แก้แล้ว ลดไม่ต่ำกว่า 1
