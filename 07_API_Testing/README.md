@@ -9,13 +9,13 @@
 
 ```json
 {
-  "customer_name": "สมชาย ใจดี",
-  "phone": "0812345678",
-  "address": "บ้านเลขที่ 10",
-  "items": [
-    { "menu_id": "M02", "menu_name": "ลาเต้", "price": 45, "qty": 3, "sweetness": "100%" }
-  ],
-  "total_amount": 135
+ "customer_name": "สมชาย ใจดี",
+ "phone": "0812345678",
+ "address": "บ้านเลขที่ 10",
+ "items": [
+ { "menu_id": "M02", "menu_name": "ลาเต้", "price": 45, "qty": 3, "sweetness": "100%" }
+ ],
+ "total_amount": 135
 }
 ```
 
@@ -23,7 +23,7 @@
 
 ```javascript
 pm.test("Status code is 200", function () {
-    pm.response.to.have.status(200);
+ pm.response.to.have.status(200);
 });
 ```
 
@@ -41,12 +41,12 @@ Body เดียวกันแต่เปลี่ยน `"phone": "081234abc
 
 ```javascript
 pm.test("Invalid phone must NOT return 200", function () {
-    pm.response.to.not.have.status(200);
+ pm.response.to.not.have.status(200);
 });
 ```
 
 ## วิธีใช้ไฟล์
 
-1. เปิด Postman → Import → เลือก `coffee-shop-orders.postman_collection.json`
-2. กด Send ที่ request "Create Order - Success" → ดู Test Results ด้านล่าง (ต้อง PASS)
-3. กด Send ที่ request "Create Order - Invalid Phone" → ต้อง PASS (ระบบปฏิเสธเบอร์ผิด)
+1. เปิด Postman -> Import -> เลือก `coffee-shop-orders.postman_collection.json`
+2. กด Send ที่ request "Create Order - Success" -> ดู Test Results ด้านล่าง (ต้อง PASS)
+3. กด Send ที่ request "Create Order - Invalid Phone" -> ต้อง PASS (ระบบปฏิเสธเบอร์ผิด)

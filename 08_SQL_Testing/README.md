@@ -21,8 +21,8 @@ sqlite3 coffee-shop.db < 08_SQL_Testing/verification_queries.sql
 หรือใช้ Python (มีในเครื่องส่วนใหญ่) — ดูท้ายไฟล์นี้
 
 **ผลลัพธ์ที่ถูกต้อง (healthy database):**
-- Query 3 (เบอร์ผิดรูปแบบ) → **0 แถว**
-- Query 4 (ยอดต่ำกว่า 100 / ติดลบ) → **0 แถว**
+- Query 3 (เบอร์ผิดรูปแบบ) -> **0 แถว**
+- Query 4 (ยอดต่ำกว่า 100 / ติดลบ) -> **0 แถว**
 
 ## จุดที่ควรรู้ (เรียนรู้จากการทดสอบจริง)
 
@@ -35,6 +35,6 @@ import sqlite3
 con = sqlite3.connect("coffee-shop.db")
 cur = con.cursor()
 for f in ["08_SQL_Testing/schema.sql", "08_SQL_Testing/seed.sql"]:
-    cur.executescript(open(f, encoding="utf-8").read())
+ cur.executescript(open(f, encoding="utf-8").read())
 print(cur.execute("SELECT customer_name, phone, total_amount FROM orders WHERE order_id=1").fetchall())
 ```

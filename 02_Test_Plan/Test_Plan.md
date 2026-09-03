@@ -3,7 +3,7 @@
 | รายการ | รายละเอียด |
 |---|---|
 | โปรเจกต์ | ระบบสั่งกาแฟออนไลน์ (Coffee Shop Ordering) |
-| เวอร์ชันที่ทดสอบ | Build 1.0.0 (Cycle 1) → Build 1.1.0 (Regression) |
+| เวอร์ชันที่ทดสอบ | Build 1.0.0 (Cycle 1) -> Build 1.1.0 (Regression) |
 | ผู้ทดสอบ | Kanokwan P. |
 
 ## Scope
@@ -31,7 +31,7 @@ Functional (Manual) · API (Postman) · Database (SQL) · Regression
 | สัปดาห์ | งาน |
 |---|---|
 | 1 | เขียน SRS / Test Plan / Test Case / Test Data |
-| 2 | Execute Cycle 1 → เขียน Bug Report → Regression → Test Report |
+| 2 | Execute Cycle 1 -> เขียน Bug Report -> Regression -> Test Report |
 
 ## Risk
 
