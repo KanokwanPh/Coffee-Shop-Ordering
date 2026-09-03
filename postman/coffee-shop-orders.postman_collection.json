@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "Coffee Shop Ordering - QA Basic",
+    "description": "Postman Collection สำหรับทดสอบ API ระบบสั่งกาแฟออนไลน์ (เคสพื้นฐาน: สร้างคำสั่งซื้อ แล้วตรวจ status 200)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order - Success (status 200)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customer_name\": \"สมชาย ใจดี\",\n  \"phone\": \"0812345678\",\n  \"address\": \"บ้านเลขที่ 10\",\n  \"items\": [\n    { \"menu_id\": \"M02\", \"menu_name\": \"ลาเต้\", \"price\": 45, \"qty\": 3, \"sweetness\": \"100%\" }\n  ],\n  \"total_amount\": 135\n}"
+        },
+        "url": {
+          "raw": "https://api.coffeeshop.com/orders",
+          "protocol": "https",
+          "host": ["api", "coffeeshop", "com"],
+          "path": ["orders"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create Order - Invalid Phone (expect NOT 200)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customer_name\": \"สมชาย ใจดี\",\n  \"phone\": \"081234abcd\",\n  \"address\": \"บ้านเลขที่ 10\",\n  \"items\": [\n    { \"menu_id\": \"M02\", \"menu_name\": \"ลาเต้\", \"price\": 45, \"qty\": 3, \"sweetness\": \"100%\" }\n  ],\n  \"total_amount\": 135\n}"
+        },
+        "url": {
+          "raw": "https://api.coffeeshop.com/orders",
+          "protocol": "https",
+          "host": ["api", "coffeeshop", "com"],
+          "path": ["orders"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Invalid phone must NOT return 200\", function () {",
+              "    pm.response.to.not.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
